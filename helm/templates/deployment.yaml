@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: app-deploy
+    labels:
+      app: app
+      backstage.io/kubernetes-id: my-poc-template
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: app
+    template:
+        metadata:
+            labels:
+                app: app
+                backstage.io/kubernetes-id: my-poc-template
+        spec:
+            containers:
+                - name: app
+                  image: jeffersonvalente/my-app-helm:v1
+                  ports:
+                    - containerPort: 3000
+                  env:
+                  - name: NAME
+                    value: 'Jefferson'
+                  readinessProbe:
+                    httpGet:
+                        path: /health
+                        port: 3000
+                    initialDelaySeconds: 10
+                    periodSeconds: 10
+                    successThreshold: 1
+                    failureThreshold: 3
+                  livenessProbe:
+                    httpGet:
+                        path: /health
+                        port: 3000
+                    initialDelaySeconds: 10
+                    periodSeconds: 10
+                    timeoutSeconds: 5
+                    successThreshold: 1
+                    failureThreshold: 3

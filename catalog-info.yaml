@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  links:
+    - url: https://github.com/jeffersonvalente1/my-app/edit/main/catalog-info.yaml
+      title: my_app
+      icon: dashboard
+  name: my_app
+  annotations:
+    github.com/project-slug: jeffersonvalente1/my_app
+    argocd/app-name: my-app
+    'backstage.io/kubernetes-id': my-app
+    'backstage.io/kubernetes-namespace': my-app
+spec:
+  type: service
+  owner: athena
+  lifecycle: production
+
