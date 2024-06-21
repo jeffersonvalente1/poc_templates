@@ -1,20 +1,19 @@
-name: Deploy a Go API
+name: Deploy Teste Argo
 
-on:
-  workflow_dispatch:
-    inputs:
-      apiName:
-        description: 'API Name'
-        required: true
-      imageName:
-        description: 'Container Image Name'
-        required: true
-      repoURLforArgo: 
-        description: 'The URL of the repository for Argo CD to deploy the GO API'
-        required: true
-      k8sClusterURLforArgo: 
-        description: 'The URL of the K8s cluster in Argo CD for application deployment'
-        required: true
+on: push
+#    inputs:
+#      apiName:
+#        description: 'API Name'
+#        required: true
+#      imageName:
+#        description: 'Container Image Name'
+#        required: true
+#      repoURLforArgo: 
+#        description: 'The URL of the repository for Argo CD to deploy the GO API'
+#        required: true
+#      k8sClusterURLforArgo: 
+#        description: 'The URL of the K8s cluster in Argo CD for application deployment'
+#        required: true
 jobs:
   deploy-api:
     runs-on: ubuntu-latest
